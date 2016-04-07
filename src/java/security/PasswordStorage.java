@@ -46,9 +46,7 @@ public class PasswordStorage
     public static final int SALT_INDEX = 3;
     public static final int PBKDF2_INDEX = 4;
 
-    public static String createHash(String password)
-        throws CannotPerformOperationException
-    {
+    public static String createHash(String password) throws CannotPerformOperationException{
         return createHash(password.toCharArray());
     }
 
@@ -86,6 +84,7 @@ public class PasswordStorage
     {
         // Decode the hash into its parameters
         String[] params = correctHash.split(":");
+        System.out.println("params: "+params.length);
         if (params.length != HASH_SECTIONS) {
             throw new InvalidHashException(
                 "Fields are missing from the password hash."
